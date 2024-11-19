@@ -5,28 +5,31 @@ import java.io.Serializable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
+import lombok.Getter;
+import lombok.Setter;
+import jakarta.persistence.Entity;
 import jakarta.persistence.InheritanceType;
 
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Getter
+@Setter
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) 
 public abstract class Pessoa implements Serializable {
     @Id
-    @Column(length = 14, unique = true, nullable = false)
+    @Column(name="cpf")
     private String cpf;
-    @Column(length = 60, nullable = false)
+
+    @Column(name = "nome",length = 60, nullable = false)
     private String nome;
-    @Column(length = 60, nullable = false)
+
+    @Column(name="senha",length = 60, nullable = false)
     private String senha;
     
-    public Pessoa(String nome, String cpf, String senha){
-        this.cpf = cpf;
-        this.nome = nome;
-        this.senha = senha;
-    }
     public void verificarLogin(){
 
     }
     public void alterarSenha(){
-        
+
     }
 
 }
