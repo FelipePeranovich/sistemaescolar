@@ -36,6 +36,5 @@ public class Aluno extends Pessoa {
     @ManyToOne
     @JoinColumn(name="cpf_responsavel", referencedColumnName = "cpf")
     private Responsavel responsavel;
-
-    
+  
 }
