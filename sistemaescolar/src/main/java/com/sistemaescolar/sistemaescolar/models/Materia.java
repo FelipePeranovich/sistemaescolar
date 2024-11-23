@@ -12,8 +12,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,10 +33,10 @@ public class Materia {
     @ManyToMany(mappedBy = "materia")
     private Set<Turma> turma = new HashSet<>();
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cpf_professor", referencedColumnName = "cpf")
+    @ManyToOne
+    @JoinColumn(name="cpf_professor", referencedColumnName="cpf")
     private Professor professor;
-
+    
     @OneToMany(mappedBy = "materia", cascade = CascadeType.MERGE, fetch =FetchType.LAZY) 
     private Set<Boletim> boletim = new HashSet<>();
   

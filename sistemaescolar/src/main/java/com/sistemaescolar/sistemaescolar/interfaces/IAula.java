@@ -5,20 +5,18 @@ import java.util.Optional;
 
 
 
-public interface IServicos<T,K> {
+public interface IAula<T,K> {
 
     T novo(T obj);
 
     Optional<T> busca(K chave);
 
-    List<T> buscaPorNome(String nome);
+    List<T> buscaPorCod(int codAula);
 
     List<T> todos();
 
     T atualizar(T obj);
 
     void excluir(T obj);
-
-    void excluirRa(K chave);
 
 }

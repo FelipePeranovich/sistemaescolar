@@ -5,14 +5,15 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.sistemaescolar.sistemaescolar.interfaces.IServicos;
+
+import com.sistemaescolar.sistemaescolar.interfaces.IAlunos;
 import com.sistemaescolar.sistemaescolar.models.Aluno;
 import com.sistemaescolar.sistemaescolar.repository.AlunoRepository;
 
 
 
 @Service
-public class AlunoService implements IServicos<Aluno,String> {
+public class AlunoService implements IAlunos<Aluno,String> {
 
     private AlunoRepository ar;
 
@@ -28,7 +29,6 @@ public class AlunoService implements IServicos<Aluno,String> {
     @Override
     public Optional<Aluno> busca(String chave){
         Optional<Aluno> al = ar.findById(chave);
-      
         return al;
     }
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alunos</title>
+</head>
+<body>
+    <h1>Lista de professores</h1>
+    <a th:href="@{professores/voltar}"><button>Voltar</button></a>
+    <a th:href="@{professores/novo}"><button>Novo Professor</button></a>
+    <table>
+        <tr th:each="professor : ${professores}">
+            <td th:text="${professor.nome}"></td>
+            <td th:text="${professor.cpf}"></td>
+            <td th:text="${professor.salarioMensal}"></td>
+            <td><a th:href="@{professores/editar/}+*{professor.cpf}">Editar</a></td>
+            <td><a th:href="@{professores/excluir/}+*{professor.cpf}">Excluir</a></td>
+            <td><a th:href="@{professores/detalhar/}+*{professor.cpf}">Detalhar</a></td>
+        </tr>
+    </table>    
+</body>
+</html>

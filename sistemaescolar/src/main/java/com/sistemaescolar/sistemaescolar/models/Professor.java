@@ -17,8 +17,7 @@ public class Professor extends Funcionario {
     @OneToMany(mappedBy = "professor", cascade = CascadeType.MERGE, fetch =FetchType.LAZY)
     private Set<Aula> aula = new HashSet<>();
 
-    @OneToOne(mappedBy = "professor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Materia materia; 
-   
+    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Materia> materia = new HashSet<>();
 
 }

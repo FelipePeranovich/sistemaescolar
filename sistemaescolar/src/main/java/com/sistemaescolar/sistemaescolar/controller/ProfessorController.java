@@ -8,82 +8,79 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import com.sistemaescolar.sistemaescolar.interfaces.IControladores;
-import com.sistemaescolar.sistemaescolar.models.Aluno;
-import com.sistemaescolar.sistemaescolar.service.AlunoService;
-import com.sistemaescolar.sistemaescolar.service.TurmaService;
+import com.sistemaescolar.sistemaescolar.models.Professor;
+
+import com.sistemaescolar.sistemaescolar.service.ProfessorService;
 
 
 @Controller
-@RequestMapping("/alunos")
-public class AlunoController implements IControladores<Aluno,String> {
+@RequestMapping("/professores")
+public class ProfessorController implements IControladores<Professor,String> {
 
-    private AlunoService as;
+    private ProfessorService ps;
 
-    private TurmaService ts;
+    public ProfessorController(ProfessorService ps){
+        this.ps = ps;
 
-    public AlunoController(AlunoService as, TurmaService ts){
-        this.as = as;
-        this.ts = ts;
     }
     
     @GetMapping("/novo")
     @Override
     public ModelAndView novo() {
-        ModelAndView mv = new ModelAndView("alunos/novo.html");
-        mv.addObject("aluno", new Aluno() );
-        mv.addObject("turma", ts.todos());
+        ModelAndView mv = new ModelAndView("professores/novo.html");
+        mv.addObject("professor", new Professor() );
         return mv;
     }
     @PostMapping("/novo")   
     @Override
-    public ModelAndView novo(Aluno obj) {
-        obj = as.novo(obj);
-      ModelAndView mv = new ModelAndView("redirect:/alunos");
+    public ModelAndView novo(Professor obj) {
+        obj = ps.novo(obj);
+      ModelAndView mv = new ModelAndView("redirect:/professores");
       return mv;
     }
     
     @GetMapping
     @Override
     public ModelAndView listar() {
-        ModelAndView mv = new ModelAndView("alunos/index.html");
-        mv.addObject("alunos", as.todos());
+        ModelAndView mv = new ModelAndView("professores/index.html");
+        mv.addObject("professores", ps.todos());
         return mv;
     }
     
     @GetMapping("/editar/{chave}")
     @Override
     public ModelAndView editar( @PathVariable String chave) {
-        ModelAndView mv = new ModelAndView("alunos/editar.html");
-        mv.addObject("aluno", as.busca(chave));
+        ModelAndView mv = new ModelAndView("professores/editar.html");
+        mv.addObject("professor", ps.busca(chave));
         return mv;
     }
     @PostMapping("/editar")
     @Override
-    public ModelAndView editar(Aluno obj, String Ra) {
+    public ModelAndView editar(Professor obj, String cpf) {
         ModelAndView mv  = new ModelAndView("redirect:/alunos");
-        obj = as.atualizar(obj);
+        obj = ps.atualizar(obj);
         return mv;
     }
     @GetMapping("/excluir/{chave}")
     @Override
     public ModelAndView excluir(@PathVariable String chave) {
-        Optional<Aluno> aluno = as.busca(chave);
+        Optional<Professor> professor = ps.busca(chave);
         ModelAndView mv;
-        if (aluno.isPresent()){       
-            mv = new ModelAndView("alunos/excluir.html");
-            mv.addObject("aluno", aluno);
+        if (professor.isPresent()){       
+            mv = new ModelAndView("professores/excluir.html");
+            mv.addObject("professor", professor);
         }
         else{
-            mv = new ModelAndView("redirect:/alunos");
+            mv = new ModelAndView("redirect:/professores");
         }
         return mv;
     }
 
     @PostMapping("/excluir")
     @Override
-    public ModelAndView excluir(Aluno obj, String chave) {
-        ModelAndView mv  = new ModelAndView("redirect:/alunos");
-        as.excluir(obj);
+    public ModelAndView excluir(Professor obj, String chave) {
+        ModelAndView mv  = new ModelAndView("redirect:/professores");
+        ps.excluir(obj);
         return mv;
     }
     @GetMapping("/voltar")
@@ -93,7 +90,7 @@ public class AlunoController implements IControladores<Aluno,String> {
     }
     @GetMapping("/voltarNovo")
     public ModelAndView voltarNovo(){
-        ModelAndView mv = new ModelAndView("redirect:../alunos");
+        ModelAndView mv = new ModelAndView("redirect:../professores");
         return mv;
     }
     

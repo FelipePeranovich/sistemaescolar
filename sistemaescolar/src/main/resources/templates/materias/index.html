@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materias</title>
+</head>
+<body>
+    <h1>Lista de Materias</h1>
+    <a th:href="@{materias/voltar}"><button>Voltar</button></a>
+    <a th:href="@{materias/novo}"><button>Nova Materia</button></a>
+    <table>
+        <tr th:each="materia : ${materias}">
+            <td th:text="${materia.descMateria}"></td>
+            <td th:text="${materia.codMateria}"></td>
+            <td><a th:href="@{materias/editar/}+*{materia.codMateria}">Editar</a></td>
+            <td><a th:href="@{materias/excluir/}+*{materia.codMateria}">Excluir</a></td>
+            <td><a th:href="@{materias/detalhar/}+*{materia.codMateria}">Detalhar</a></td>
+        </tr>
+    </table>    
+</body>
+</html>

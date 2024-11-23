@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Aluno</title>
+</head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    color: #294cbe;
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+div {
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box; 
+}
+
+input[type="submit"] {
+    background-color: #294cbe;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #1f3d9a;
+}
+
+a button {
+    background-color: #294cbe;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+a button:hover {
+    background-color: #1f3d9a;
+    transform: scale(1.05);
+}
+
+a {
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    form {
+        padding: 10px;
+    }
+    input[type="text"],
+    input[type="date"],
+    input[type="password"],
+    select {
+        padding: 8px 10px;
+    }
+}
+
+</style>
+<body>
+    <h1>Cadastro Aluno</h1>
+    <a th:href="@{voltarNovo}"><button>Voltar</button></a>
+    <div>
+        <form th:action="@{novo}" th:object="${aluno}" method="post">
+            <div>
+                <label> RA do aluno
+                    <input type="text" th:field="*{ra}">
+                </label>
+            </div>
+            <div>
+                <label> Nome do aluno
+                    <input type="text" th:field="*{nome}">
+                </label>
+            </div>
+            <div>
+                <label> CPF:
+                    <input type="text" th:field="*{cpf}">
+                </label>
+            </div>
+            <div>
+                <label> Data de nascimento
+                    <input type="date" th:field="*{dataNasc}">
+                </label>
+            </div>
+            <div>
+                <label> senha
+                    <input type="password" th:field="*{senha}">
+                </label>
+            </div>
+            <div>
+                <label> Turma
+                    <select id="turma" th:field="*{turma}">
+                    <option value="" disabled selected>Selecione uma turma</option>
+                    <option th:each="turma : ${turma}" th:value="${turma.codTurma}" th:text="${turma.nome}" selected="selected"></option>
+                </select>
+                </label>
+            </div>
+            <!-- <div>
+                <label> Responsavel
+                    <select id="Responsavel" th:field="*{responsavel}">
+                    <option value="" disabled selected>Selecione um Responsavel</option>
+                    <option th:each="responsavel : ${responsavel}" th:value="${responsavel.cpf}" th:text="${responsavel.nome}" selected="selected"></option>
+                </select>
+                </label>
+            </div> -->
+            <input type="submit" value="Gravar">
+        </form>        
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Materia</title>
+</head>
+<body>
+    <h1>Cadastro Materia</h1>
+    <a th:href="@{voltarNovo}"><button>Voltar</button></a>
+    <div>
+        <form th:action="@{novo}" th:object="${professor}" method="post">
+            <div>
+                <label> Nome do professor
+                    <input type="text" th:field="*{nome}">
+                </label>
+            </div>
+            <div>
+                <label> CPF:
+                    <input type="text" th:field="*{cpf}">
+                </label>
+            </div>
+            <div>
+                <label> Senha:
+                    <input type="password" th:field="*{senha}">
+                </label>
+            </div>
+            <div>
+                <label> Salario:
+                    <input type="text" th:field="*{salarioMensal}">
+                </label>
+            </div>
+            <!-- <div>
+                <label> Materia:
+                    <select id="materia" th:field="*{materia}">
+                    <option value="" disabled selected>Selecione uma materia</option>
+                    <option th:each="materia : ${materia}" th:value="${materia.codMateria}" th:text="${materia.descMateria}" selected="selected"></option>
+                </select>
+                </label>
+            </div> -->
+            <input type="submit" value="Gravar">
+        </form>
+    </div>
+</body>
+</html>

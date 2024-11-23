@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name="Responsavel")
-class Responsavel extends Pessoa {
+public class Responsavel extends Pessoa {
 
     @Column(name="telefoneResponsavel", length=60, nullable = false )
     private String telefoneResponsavel;
