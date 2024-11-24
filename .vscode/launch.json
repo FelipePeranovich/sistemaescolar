@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SistemaescolarApplication<sistemaescolar>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.sistemaescolar.sistemaescolar.SistemaescolarApplication",
+            "projectName": "sistemaescolar",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

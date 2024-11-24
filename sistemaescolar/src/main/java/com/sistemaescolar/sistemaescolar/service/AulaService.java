@@ -26,12 +26,6 @@ public class AulaService implements IAula<Aula,String> {
     }
 
     @Override
-    public Optional<Aula> busca(String chave){
-        Optional<Aula> a = ar.findById(chave);
-        return a;
-    }
-
-    @Override
     public List<Aula> buscaPorCod(int codAula){
         return ar.findByCodAula(codAula);
     }
@@ -49,6 +43,12 @@ public class AulaService implements IAula<Aula,String> {
     @Override
     public void excluir(Aula a){
         ar.delete(a);
+    }
+
+    @Override
+    public Optional<Aula> busca(String chave) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'busca'");
     }
 
     
