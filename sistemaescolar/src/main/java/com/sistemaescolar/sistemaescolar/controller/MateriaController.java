@@ -94,4 +94,10 @@ public class MateriaController implements IControladores<Materia,String> {
         ModelAndView mv = new ModelAndView("redirect:../materias");
         return mv;
     }
+
+	@Override
+	public ModelAndView detalhar(String chave) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'detalhar'");
+	}
 }

@@ -147,14 +147,14 @@ a {
                 </select>
                 </label>
             </div>
-            <!-- <div>
+            <div>
                 <label> Responsavel
                     <select id="Responsavel" th:field="*{responsavel}">
                     <option value="" disabled selected>Selecione um Responsavel</option>
                     <option th:each="responsavel : ${responsavel}" th:value="${responsavel.cpf}" th:text="${responsavel.nome}" selected="selected"></option>
                 </select>
                 </label>
-            </div> -->
+            </div>
             <input type="submit" value="Gravar">
         </form>        
     </div>

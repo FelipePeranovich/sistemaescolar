@@ -93,5 +93,11 @@ public class ResponsavelController implements IControladores<Responsavel,String>
         ModelAndView mv = new ModelAndView("redirect:../responsaveis");
         return mv;
     }
+
+	@Override
+	public ModelAndView detalhar(String chave) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'detalhar'");
+	}
     
 }

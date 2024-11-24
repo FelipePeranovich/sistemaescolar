@@ -12,15 +12,16 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "Aluno")
+@Table(name = "Aluno", uniqueConstraints={@UniqueConstraint(columnNames={"ra"})})
 public class Aluno extends Pessoa {
-    @Column(name = "ra", length = 16, nullable = false)
+    @Column(name = "ra", unique = true, length = 16, nullable = false )
     private int ra;
 
     @Column(name = "dataNasc" , length = 10 ,nullable = false)

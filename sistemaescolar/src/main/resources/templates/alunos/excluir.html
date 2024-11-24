@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir</title>
+</head>
+<body>
+    <h1>Deseja mesmo excluir esse Aluno?</h1>
+    <a th:href="@{voltarExcluir}"><button>Voltar</button></a>
+    <div>
+        <form th:action="@{/alunos/excluir}" th:object="${aluno}" method="post" >
+            <div>
+                <label> RA do aluno
+                    <input type="text" th:field="*{ra}" readonly>
+                </label>
+            </div>
+            <div>
+                <label> Nome do aluno
+                    <input type="text" th:field="*{nome}" readonly>
+                </label>
+            </div>
+            <div>
+                <label> CPF:
+                    <input type="text" th:field="*{cpf}" readonly>
+                </label>
+            </div>
+            <div>
+                <label> Data de nascimento
+                    <input type="date" th:field="*{dataNasc}" readonly>
+                </label>
+            </div>
+            <div>
+                <label> senha
+                    <input type="text" th:field="*{senha}" readonly>
+                </label>
+            </div>
+            <div>
+                <label> Turma
+                    <input type="text" th:field="${aluno.turma.nome}" readonly>
+                </select>
+                </label>
+            </div>
+            <div>
+                <label> Responsavel
+                    <input type="text" th:field="${aluno.responsavel.nome}" readonly>
+                </select>
+                </label>
+            </div>
+            <input type="submit" value="Excluir">
+        </form> 
+       
+</html>

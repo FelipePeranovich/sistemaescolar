@@ -10,7 +10,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sistemaescolar.sistemaescolar.interfaces.IControladores;
 import com.sistemaescolar.sistemaescolar.models.Aluno;
 import com.sistemaescolar.sistemaescolar.service.AlunoService;
+import com.sistemaescolar.sistemaescolar.service.ResponsavelService;
 import com.sistemaescolar.sistemaescolar.service.TurmaService;
+
+
 
 
 @Controller
@@ -18,12 +21,13 @@ import com.sistemaescolar.sistemaescolar.service.TurmaService;
 public class AlunoController implements IControladores<Aluno,String> {
 
     private AlunoService as;
-
     private TurmaService ts;
+    private ResponsavelService res;
 
-    public AlunoController(AlunoService as, TurmaService ts){
+    public AlunoController(AlunoService as, TurmaService ts, ResponsavelService res){
         this.as = as;
         this.ts = ts;
+        this.res = res;
     }
     
     @GetMapping("/novo")
@@ -32,6 +36,7 @@ public class AlunoController implements IControladores<Aluno,String> {
         ModelAndView mv = new ModelAndView("alunos/novo.html");
         mv.addObject("aluno", new Aluno() );
         mv.addObject("turma", ts.todos());
+        mv.addObject("responsavel", res.todos());
         return mv;
     }
     @PostMapping("/novo")   
@@ -47,6 +52,8 @@ public class AlunoController implements IControladores<Aluno,String> {
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("alunos/index.html");
         mv.addObject("alunos", as.todos());
+        mv.addObject("turma", ts.todos());
+        mv.addObject("responsavel", res.todos());
         return mv;
     }
     
@@ -55,15 +62,18 @@ public class AlunoController implements IControladores<Aluno,String> {
     public ModelAndView editar( @PathVariable String chave) {
         ModelAndView mv = new ModelAndView("alunos/editar.html");
         mv.addObject("aluno", as.busca(chave));
+        mv.addObject("turma", ts.todos());
+        mv.addObject("responsavel", res.todos());
         return mv;
     }
     @PostMapping("/editar")
     @Override
-    public ModelAndView editar(Aluno obj, String Ra) {
+    public ModelAndView editar(Aluno obj, String cpf) {
         ModelAndView mv  = new ModelAndView("redirect:/alunos");
         obj = as.atualizar(obj);
         return mv;
     }
+    
     @GetMapping("/excluir/{chave}")
     @Override
     public ModelAndView excluir(@PathVariable String chave) {
@@ -79,6 +89,16 @@ public class AlunoController implements IControladores<Aluno,String> {
         return mv;
     }
 
+    @GetMapping("/detalhar/{chave}")
+    @Override
+    public ModelAndView detalhar( @PathVariable String chave) {
+        ModelAndView mv = new ModelAndView("alunos/detalhar.html");
+        mv.addObject("aluno", as.busca(chave));
+        mv.addObject("turma", ts.todos());
+        mv.addObject("responsavel", res.todos());
+        return mv;
+    }
+
     @PostMapping("/excluir")
     @Override
     public ModelAndView excluir(Aluno obj, String chave) {
@@ -86,6 +106,7 @@ public class AlunoController implements IControladores<Aluno,String> {
         as.excluir(obj);
         return mv;
     }
+    
     @GetMapping("/voltar")
     public ModelAndView voltar(){
         ModelAndView mv = new ModelAndView("redirect:/");
@@ -96,5 +117,16 @@ public class AlunoController implements IControladores<Aluno,String> {
         ModelAndView mv = new ModelAndView("redirect:../alunos");
         return mv;
     }
+    @GetMapping("editar/voltarEditar")
+    public ModelAndView voltarEditar(){
+        ModelAndView mv = new ModelAndView("redirect:../../alunos");
+        return mv;
+    }
+    @GetMapping("detalhar/voltarDetalhar")
+    public ModelAndView voltarDetalhar(){
+        ModelAndView mv = new ModelAndView("redirect:../../alunos");
+        return mv;
+    }
+    
     
 }

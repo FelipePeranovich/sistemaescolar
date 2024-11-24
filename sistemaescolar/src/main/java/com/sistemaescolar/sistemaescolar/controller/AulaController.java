@@ -87,5 +87,11 @@ public class AulaController implements IControladores<Aula,String> {
         return mv;
     }
 
+	@Override
+	public ModelAndView detalhar(String chave) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'detalhar'");
+	}
+
     
 }

@@ -102,10 +102,10 @@ table a:hover {
         <tr th:each="aluno : ${alunos}">
             <td th:text="${aluno.nome}"></td>
             <td th:text="${aluno.ra}"></td>
-            <td th:text="${aluno.turma.nome}"></td>
-            <td><a th:href="@{alunos/editar/}+*{aluno.ra}">Editar</a></td>
-            <td><a th:href="@{alunos/excluir/}+*{aluno.ra}">Excluir</a></td>
-            <td><a th:href="@{alunos/detalhar/}+*{aluno.ra}">Detalhar</a></td>
+            <td th:text="${aluno.turma.nome}"></td> 
+            <td><a th:href="@{alunos/editar/}+*{aluno.cpf}">Editar</a></td>
+            <td><a th:href="@{alunos/excluir/}+*{aluno.cpf}">Excluir</a></td>
+            <td><a th:href="@{alunos/detalhar/}+*{aluno.cpf}">Detalhar</a></td>
         </tr>
     </table>    
 </body>

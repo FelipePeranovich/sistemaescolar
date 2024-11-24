@@ -93,5 +93,11 @@ public class ProfessorController implements IControladores<Professor,String> {
         ModelAndView mv = new ModelAndView("redirect:../professores");
         return mv;
     }
+
+	@Override
+	public ModelAndView detalhar(String chave) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'detalhar'");
+	}
     
 }

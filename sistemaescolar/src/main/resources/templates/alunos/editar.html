@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar</title>
+</head>
+<body>
+    <h1>Editar Aluno</h1>
+    <a th:href="@{voltarEditar}"><button>Voltar</button></a>
+    <div>
+        <form th:action="@{/alunos/editar}" th:object="${aluno}" method="post">
+            <div>
+                <label> RA do aluno
+                    <input type="text" th:field="*{ra}">
+                </label>
+            </div>
+            <div>
+                <label> Nome do aluno
+                    <input type="text" th:field="*{nome}">
+                </label>
+            </div>
+            <div>
+                <label> CPF:
+                    <input type="text" th:field="*{cpf}">
+                </label>
+            </div>
+            <div>
+                <label> Data de nascimento
+                    <input type="date" th:field="*{dataNasc}">
+                </label>
+            </div>
+            <div>
+                <label> senha
+                    <input type="text" th:field="*{senha}">
+                </label>
+            </div>
+            <div>
+                <label> Turma
+                    <select id="turma" th:field="*{turma}">
+                    <option value="" disabled selected>Selecione uma turma</option>
+                    <option th:each="turma : ${turma}" th:value="${turma.codTurma}" th:text="${turma.nome}" selected="selected"></option>
+                </select>
+                </label>
+            </div>
+            <div>
+                <label> Responsavel
+                    <select id="Responsavel" th:field="*{responsavel}">
+                    <option value="" disabled selected>Selecione um Responsavel</option>
+                    <option th:each="responsavel : ${responsavel}" th:value="${responsavel.cpf}" th:text="${responsavel.nome}" selected="selected"></option>
+                </select>
+                </label>
+            </div>
+            <input type="submit" value="Gravar">
+        </form> 
+</body>
+</html>
