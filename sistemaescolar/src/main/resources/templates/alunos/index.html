@@ -1,96 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alunos</title>
 </head>
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-h1 {
-    text-align: center;
-    color: #294cbe;
-    font-size: 2em;
-    margin-top: 20px;
-}
+    h1 {
+        text-align: center;
+        color: #294cbe;
+        font-size: 2em;
+        margin-top: 20px;
+    }
 
-.container {
-    display: flex;
-    justify-content: center; 
-    gap: 15px; 
-    margin-top: 20px;
-}
+    .container {
+        display: flex;
+        justify-content: center; 
+        gap: 15px; 
+        margin-top: 20px;
+    }
 
-a button {
-    background-color: #294cbe;
-    color: #fff;
-    font-size: 1em;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+    a button {
+        background-color: #294cbe;
+        color: #fff;
+        font-size: 1em;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-a button:hover {
-    background-color: #1f3d9a;
-    transform: scale(1.05);
-}
+    a button:hover {
+        background-color: #1f3d9a;
+        transform: scale(1.05);
+    }
 
-a {
-    text-decoration: none;
-}
+    a {
+        text-decoration: none;
+    }
 
-table {
-    width: 90%;
-    max-width: 800px;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+    table {
+        width: auto;
+        max-width: 90%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-table th, table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
-}
+    table th, table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+        white-space: nowrap; /* Evita quebra de texto em células com conteúdo longo */
+    }
 
-table th {
-    background-color: #294cbe;
-    color: white;
-}
+    table th {
+        background-color: #294cbe;
+        color: white;
+    }
 
-table tr:hover {
-    background-color: #f1f1f1;
-}
+    table tr:hover {
+        background-color: #f1f1f1;
+    }
 
-table a {
-    text-decoration: none;
-    color: #294cbe;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
+    table a {
+        text-decoration: none;
+        color: #294cbe;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
 
-table a:hover {
-    background-color: #294cbe;
-    color: white;
-}
+    table a:hover {
+        background-color: #294cbe;
+        color: white;
+    }
+
+    @media (max-width: 600px) {
+        table {
+            font-size: 0.9em;
+        }
+
+        table th, table td {
+            padding: 8px;
+        }
+    }
 </style>
 <body>
     <h1>Lista de alunos</h1>
@@ -99,14 +110,26 @@ table a:hover {
     <a th:href="@{alunos/novo}"><button>Novo Aluno</button></a>
     </div>
     <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>RA</th>
+                <th>Turma</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
         <tr th:each="aluno : ${alunos}">
-            <td th:text="${aluno.nome}"></td>
-            <td th:text="${aluno.ra}"></td>
-            <td th:text="${aluno.turma.nome}"></td> 
-            <td><a th:href="@{alunos/editar/}+*{aluno.cpf}">Editar</a></td>
-            <td><a th:href="@{alunos/excluir/}+*{aluno.cpf}">Excluir</a></td>
-            <td><a th:href="@{alunos/detalhar/}+*{aluno.cpf}">Detalhar</a></td>
+                <td th:text="${aluno.nome}"></td>
+                <td th:text="${aluno.ra}"></td>
+                <td th:text="${aluno.turma.nome}"></td> 
+            <td>
+                <a th:href="@{alunos/editar/}+*{aluno.cpf}">Editar</a>
+                <a th:href="@{alunos/excluir/}+*{aluno.cpf}">Excluir</a>
+                <a th:href="@{alunos/detalhar/}+*{aluno.cpf}">Detalhar</a>
+            </td>
         </tr>
+    </tbody>
     </table>    
 </body>
 </html>

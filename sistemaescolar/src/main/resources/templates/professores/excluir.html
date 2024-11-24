@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Materia</title>
+    <title>Excluir</title>
 </head>
 <style>
     body {
@@ -110,12 +110,12 @@
     
 </style>
 <body>
-    <h1>Cadastro Materia</h1>
-    <a th:href="@{voltarNovo}"><button>Voltar</button></a>
+    <h1>Deseja mesmo excluir esse Professor?</h1>
+    <a th:href="@{voltarExcluir}"><button>Voltar</button></a>
     <div>
-        <form th:action="@{novo}" th:object="${professor}" method="post">
+        <form th:action="@{/professores/excluir}" th:object="${professor}" method="post" >
             <div>
-                <label> Nome do professor
+                <label> nome
                     <input type="text" th:field="*{nome}">
                 </label>
             </div>
@@ -125,17 +125,16 @@
                 </label>
             </div>
             <div>
-                <label> Senha:
-                    <input type="password" th:field="*{senha}">
+                <label> senha
+                    <input type="text" th:field="*{senha}">
                 </label>
             </div>
             <div>
                 <label> Salário:
                     <input type="text" th:field="*{salarioMensal}">
                 </label>
-            </div>         
-            <input type="submit" value="Cadastrar">
-        </form>
-    </div>
-</body>
+            </div>
+            <input type="submit" value="Excluir">
+        </form> 
+       
 </html>

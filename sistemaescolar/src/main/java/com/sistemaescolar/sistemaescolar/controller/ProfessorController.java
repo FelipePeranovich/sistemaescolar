@@ -57,10 +57,11 @@ public class ProfessorController implements IControladores<Professor,String> {
     @PostMapping("/editar")
     @Override
     public ModelAndView editar(Professor obj, String cpf) {
-        ModelAndView mv  = new ModelAndView("redirect:/alunos");
+        ModelAndView mv  = new ModelAndView("redirect:/professores");
         obj = ps.atualizar(obj);
         return mv;
     }
+
     @GetMapping("/excluir/{chave}")
     @Override
     public ModelAndView excluir(@PathVariable String chave) {
@@ -93,11 +94,22 @@ public class ProfessorController implements IControladores<Professor,String> {
         ModelAndView mv = new ModelAndView("redirect:../professores");
         return mv;
     }
-
+    @GetMapping("editar/voltarEditar")
+    public ModelAndView voltarEditar(){
+        ModelAndView mv = new ModelAndView("redirect:../../professores");
+        return mv;
+    }
+    @GetMapping("detalhar/voltarDetalhar")
+    public ModelAndView voltarDetalhar(){
+        ModelAndView mv = new ModelAndView("redirect:../../professores");
+        return mv;
+    }
+    @GetMapping("detalhar/{chave}")
 	@Override
-	public ModelAndView detalhar(String chave) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'detalhar'");
+	public ModelAndView detalhar(@PathVariable String chave) {
+		ModelAndView mv = new ModelAndView("professores/detalhar.html");
+        mv.addObject("professor", ps.busca(chave));
+        return mv;
 	}
     
 }

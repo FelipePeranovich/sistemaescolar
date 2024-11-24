@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Materia</title>
+    <title>Detalhes</title>
 </head>
 <style>
     body {
@@ -110,31 +110,30 @@
     
 </style>
 <body>
-    <h1>Cadastro Materia</h1>
-    <a th:href="@{voltarNovo}"><button>Voltar</button></a>
+    <h1>Detalhar Professor</h1>
+    <a th:href="@{voltarDetalhar}"><button>Voltar</button></a>
     <div>
-        <form th:action="@{novo}" th:object="${professor}" method="post">
+        <form th:object="${professor}">
             <div>
                 <label> Nome do professor
-                    <input type="text" th:field="*{nome}">
+                    <input type="text" th:field="*{nome}" readonly>
                 </label>
             </div>
             <div>
                 <label> CPF:
-                    <input type="text" th:field="*{cpf}">
+                    <input type="text" th:field="*{cpf}" readonly>
                 </label>
             </div>
             <div>
                 <label> Senha:
-                    <input type="password" th:field="*{senha}">
+                    <input type="text" th:field="*{senha}" readonly>
                 </label>
             </div>
             <div>
                 <label> Salário:
-                    <input type="text" th:field="*{salarioMensal}">
+                    <input type="text" th:field="*{salarioMensal}" readonly>
                 </label>
             </div>         
-            <input type="submit" value="Cadastrar">
         </form>
     </div>
 </body>

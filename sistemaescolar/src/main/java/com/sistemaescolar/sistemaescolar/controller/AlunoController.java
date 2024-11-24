@@ -73,7 +73,16 @@ public class AlunoController implements IControladores<Aluno,String> {
         obj = as.atualizar(obj);
         return mv;
     }
-    
+    @GetMapping("/detalhar/{chave}")
+    @Override
+    public ModelAndView detalhar( @PathVariable String chave) {
+        ModelAndView mv = new ModelAndView("alunos/detalhar.html");
+        mv.addObject("aluno", as.busca(chave));
+        mv.addObject("turma", ts.todos());
+        mv.addObject("responsavel", res.todos());
+        return mv;
+    }
+
     @GetMapping("/excluir/{chave}")
     @Override
     public ModelAndView excluir(@PathVariable String chave) {
@@ -87,17 +96,7 @@ public class AlunoController implements IControladores<Aluno,String> {
             mv = new ModelAndView("redirect:/alunos");
         }
         return mv;
-    }
-
-    @GetMapping("/detalhar/{chave}")
-    @Override
-    public ModelAndView detalhar( @PathVariable String chave) {
-        ModelAndView mv = new ModelAndView("alunos/detalhar.html");
-        mv.addObject("aluno", as.busca(chave));
-        mv.addObject("turma", ts.todos());
-        mv.addObject("responsavel", res.todos());
-        return mv;
-    }
+    } 
 
     @PostMapping("/excluir")
     @Override
