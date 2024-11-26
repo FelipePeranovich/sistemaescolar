@@ -11,7 +11,7 @@ public interface IAula<T,K> {
 
     Optional<T> busca(K chave);
 
-    List<T> buscaPorCod(int codAula);
+    List<T> buscaPorCodAula(String codAula);
 
     List<T> todos();
 

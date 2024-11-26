@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Materias</title>
+    <title>Responsaveis</title>
 </head>
 <style>
     body {
@@ -104,32 +104,30 @@
     }
 </style>
 <body>
-    <h1>Lista de Matérias</h1>
+    <h1>Lista de Responsaveis</h1>
     <div class="container">
-    <a th:href="@{materias/voltar}"><button>Voltar</button></a>
-    <a th:href="@{materias/novo}"><button>Nova Materia</button></a>
+    <a th:href="@{responsaveis/voltar}"><button>Voltar</button></a>
+    <a th:href="@{responsaveis/novo}"><button>Novo Responsavel</button></a>
     </div>
     <table>
         <thead>
             <tr>
-                <th>Código:</th>
-                <th>Materia:</th>
-                <th>Professor:</th>
+                <th>CPF:</th>
+                <th>Nome:</th>
                 <th>Ações:</th>
             </tr>
         </thead>
         <tbody>
-        <tr th:each="materia : ${materias}">
-            <td th:text="${materia.codMateria}"></td>
-            <td th:text="${materia.nome}"></td>
-            <td th:text="${materia.professor.nome}"></td>
+        <tr th:each="responsavel : ${responsavel}">
+                <td th:text="${responsavel.cpf}"></td>
+                <td th:text="${responsavel.nome}"></td>
             <td>
-                <a th:href="@{materias/editar/}+*{materia.codMateria}">Editar</a>
-                <a th:href="@{materias/excluir/}+*{materia.codMateria}">Excluir</a>
-                <a th:href="@{materias/detalhar/}+*{materia.codMateria}">Detalhar</a>
-        </td>
+                <a th:href="@{responsaveis/editar/}+*{responsavel.cpf}">Editar</a>
+                <a th:href="@{responsaveis/excluir/}+*{responsavel.cpf}">Excluir</a>
+                <a th:href="@{responsaveis/detalhar/}+*{responsavel.cpf}">Detalhar</a>
+            </td>
         </tr>
-        </tbody>
+    </tbody>
     </table>    
 </body>
 </html>

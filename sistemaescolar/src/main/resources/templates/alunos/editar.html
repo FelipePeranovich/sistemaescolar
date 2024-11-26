@@ -115,28 +115,28 @@
     <div>
         <form th:action="@{/alunos/editar}" th:object="${aluno}" method="post">
             <div>
+                <label> CPF:
+                    <input type="text" th:field="*{cpf}" readonly>
+                </label>
+            </div>
+            <div>
                 <label> RA do aluno
-                    <input type="text" th:field="*{ra}">
+                    <input type="text" th:field="*{ra}" required >
                 </label>
             </div>
             <div>
                 <label> Nome do aluno
-                    <input type="text" th:field="*{nome}">
-                </label>
-            </div>
-            <div>
-                <label> CPF:
-                    <input type="text" th:field="*{cpf}">
+                    <input type="text" th:field="*{nome}" required >
                 </label>
             </div>
             <div>
                 <label> Data de nascimento
-                    <input type="date" th:field="*{dataNasc}">
+                    <input type="date" th:field="*{dataNasc}" required >
                 </label>
             </div>
             <div>
                 <label> senha
-                    <input type="text" th:field="*{senha}">
+                    <input type="text" th:field="*{senha}" required >
                 </label>
             </div>
             <div>
@@ -149,7 +149,7 @@
             </div>
             <div>
                 <label> Responsavel
-                    <select id="Responsavel" th:field="*{responsavel}">
+                    <select id="Responsavel" th:field="*{responsavel}" >
                     <option value="" disabled selected>Selecione um Responsavel</option>
                     <option th:each="responsavel : ${responsavel}" th:value="${responsavel.cpf}" th:text="${responsavel.nome}" selected="selected"></option>
                 </select>

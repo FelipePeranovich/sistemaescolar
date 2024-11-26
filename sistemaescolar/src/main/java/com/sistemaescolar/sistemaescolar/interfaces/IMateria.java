@@ -11,7 +11,7 @@ public interface IMateria<T,K> {
 
     Optional<T> busca(K chave);
 
-    List<T> buscaPorCod(int codAula);
+    List<T> buscaPorNome(String nome);
 
     List<T> todos();
 

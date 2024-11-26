@@ -110,17 +110,12 @@
     
 </style>
 <body>
-    <h1>Deseja mesmo excluir esse Aluno?</h1>
+    <h1>Excluir Responsável</h1>
     <a th:href="@{voltarExcluir}"><button>Voltar</button></a>
     <div>
-        <form th:action="@{/alunos/excluir}" th:object="${aluno}" method="post" >
+        <form th:action="@{/responsaveis/excluir}" th:object="${responsavel}" method="post">
             <div>
-                <label> RA do aluno:
-                    <input type="text" th:field="*{ra}" readonly>
-                </label>
-            </div>
-            <div>
-                <label> Nome do aluno:
+                <label> Nome do Professor:
                     <input type="text" th:field="*{nome}" readonly>
                 </label>
             </div>
@@ -130,28 +125,17 @@
                 </label>
             </div>
             <div>
-                <label> Data de nascimento:
-                    <input type="date" th:field="*{dataNasc}" readonly>
-                </label>
-            </div>
-            <div>
                 <label> Senha:
                     <input type="text" th:field="*{senha}" readonly>
                 </label>
             </div>
             <div>
-                <label> Turma:
-                    <input type="text" th:field="${aluno.turma.nome}" readonly>
-                </select>
+                <label> Telefone:
+                    <input type="text" th:field="*{telefoneResponsavel}" required>
                 </label>
-            </div>
-            <div>
-                <label> Responsavel:
-                    <input type="text" th:field="${aluno.responsavel.nome}" readonly>
-                </select>
-                </label>
-            </div>
+            </div>            
             <input type="submit" value="Excluir">
-        </form> 
-       
+        </form>
+    </div>
+</body>
 </html>

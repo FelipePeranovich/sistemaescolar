@@ -28,6 +28,12 @@ public class TurmaService implements ITurma<Turma, String>{
           return tr.save(tm);
     }
 
+      @Override
+    public Optional<Turma> busca(String chave){
+        Optional<Turma> tm = tr.findById(chave);
+        return tm;
+    }
+    
     @Override
     public List<Turma> buscaPorNome(String nome){
         return tr.findByNome(nome);
@@ -43,11 +49,7 @@ public class TurmaService implements ITurma<Turma, String>{
         tr.delete(tm);
     }
 
-    @Override
-    public Optional<Turma> busca(String chave) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'busca'");
-    }
+    
 
     
 }

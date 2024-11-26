@@ -102,31 +102,26 @@ input:read-only {
 }
 </style>
 <body>
-    <h1>Detalhar Professor</h1>
+    <h1>Detalhar Matéria</h1>
     <a th:href="@{voltarDetalhar}"><button>Voltar</button></a>
     <div>
-        <form th:object="${professor}">
+        <form th:object="${materia}" >
             <div>
-                <label> Nome do professor:
+                <label> Codigo da Matéria:
+                    <input type="text" th:field="*{codMateria}"  readonly>
+                </label>
+            </div>
+            <div>
+                <label> Nome da Matéria:
                     <input type="text" th:field="*{nome}" readonly>
                 </label>
             </div>
             <div>
-                <label> CPF:
-                    <input type="text" th:field="*{cpf}" readonly>
+                <label> Professor:
+                    <input type="text" th:field="${materia.professor.nome}" readonly>
                 </label>
-            </div>
-            <div>
-                <label> Senha:
-                    <input type="text" th:field="*{senha}" readonly>
-                </label>
-            </div>
-            <div>
-                <label> Salário:
-                    <input type="text" th:field="*{salarioMensal}" readonly>
-                </label>
-            </div>         
-        </form>
+            </div> 
+        </form>        
     </div>
 </body>
 </html>

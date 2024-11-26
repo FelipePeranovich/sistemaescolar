@@ -115,7 +115,7 @@
     <div>
         <form th:action="@{/professores/excluir}" th:object="${professor}" method="post" >
             <div>
-                <label> nome
+                <label> Nome:
                     <input type="text" th:field="*{nome}">
                 </label>
             </div>
@@ -125,7 +125,7 @@
                 </label>
             </div>
             <div>
-                <label> senha
+                <label> Senha:
                     <input type="text" th:field="*{senha}">
                 </label>
             </div>

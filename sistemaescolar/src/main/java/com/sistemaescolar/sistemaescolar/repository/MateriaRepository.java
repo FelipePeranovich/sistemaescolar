@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.sistemaescolar.sistemaescolar.models.Materia;
 
 @Repository
-public interface MateriaRepository extends JpaRepository<Materia, Integer > {
-    List<Materia> findByCodMateria(int codMateria);
+public interface MateriaRepository extends JpaRepository<Materia, String> {
+    List<Materia> findByNome(String nome);
 }

@@ -53,6 +53,7 @@ public class MateriaController implements IControladores<Materia,String> {
     public ModelAndView editar( @PathVariable String chave) {
         ModelAndView mv = new ModelAndView("materias/editar.html");
         mv.addObject("materia", ms.busca(chave));
+        mv.addObject("professor", ps.todos());
         return mv;
     }
     @PostMapping("/editar")
@@ -62,6 +63,7 @@ public class MateriaController implements IControladores<Materia,String> {
         obj = ms.atualizar(obj);
         return mv;
     }
+    
     @GetMapping("/excluir/{chave}")
     @Override
     public ModelAndView excluir(@PathVariable String chave) {
@@ -94,10 +96,21 @@ public class MateriaController implements IControladores<Materia,String> {
         ModelAndView mv = new ModelAndView("redirect:../materias");
         return mv;
     }
-
-	@Override
-	public ModelAndView detalhar(String chave) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'detalhar'");
-	}
+    @GetMapping("editar/voltarEditar")
+    public ModelAndView voltarEditar(){
+        ModelAndView mv = new ModelAndView("redirect:../../materias");
+        return mv;
+    }
+    @GetMapping("detalhar/voltarDetalhar")
+    public ModelAndView voltarDetalhar(){
+        ModelAndView mv = new ModelAndView("redirect:../../materias");
+        return mv;
+    }
+    @GetMapping("/detalhar/{chave}")
+    @Override
+    public ModelAndView detalhar(@PathVariable String chave) {
+        ModelAndView mv = new ModelAndView("materias/detalhar.html");
+        mv.addObject("materia", ms.busca(chave));
+        return mv;
+    }
 }

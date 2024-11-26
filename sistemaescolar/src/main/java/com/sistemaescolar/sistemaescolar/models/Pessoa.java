@@ -24,12 +24,5 @@ public abstract class Pessoa implements Serializable {
 
     @Column(name="senha",length = 60, nullable = false)
     private String senha;
-    
-    public void verificarLogin(){
-
-    }
-    public void alterarSenha(){
-
-    }
 
 }

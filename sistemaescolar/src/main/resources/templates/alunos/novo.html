@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Aluno</title>
+    <title>Cadastrar</title>
 </head>
 <style>
 body {
@@ -116,27 +116,27 @@ a {
         <form th:action="@{novo}" th:object="${aluno}" method="post">
             <div>
                 <label> RA do aluno
-                    <input type="text" th:field="*{ra}">
+                    <input type="text" th:field="*{ra}" required>
                 </label>
             </div>
             <div>
                 <label> Nome do aluno
-                    <input type="text" th:field="*{nome}">
+                    <input type="text" th:field="*{nome}" required>
                 </label>
             </div>
             <div>
                 <label> CPF:
-                    <input type="text" th:field="*{cpf}">
+                    <input type="text" th:field="*{cpf}" required>
                 </label>
             </div>
             <div>
                 <label> Data de nascimento
-                    <input type="date" th:field="*{dataNasc}">
+                    <input type="date" th:field="*{dataNasc}" required>
                 </label>
             </div>
             <div>
                 <label> senha
-                    <input type="password" th:field="*{senha}">
+                    <input type="password" th:field="*{senha}" required>
                 </label>
             </div>
             <div>

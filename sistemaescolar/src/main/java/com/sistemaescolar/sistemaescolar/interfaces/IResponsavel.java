@@ -18,4 +18,5 @@ public interface IResponsavel<T,K> {
     T atualizar(T obj);
 
     void excluir(T obj);
+    
 }

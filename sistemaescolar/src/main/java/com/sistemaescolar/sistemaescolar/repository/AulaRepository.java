@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.sistemaescolar.sistemaescolar.models.Aula;
 
 @Repository
-public interface AulaRepository extends JpaRepository<Aula, Integer> {
-    List<Aula> findByCodAula(int codAula);
+public interface AulaRepository extends JpaRepository<Aula, String> {
+    List<Aula> findByCodAula(String codAula);
 }

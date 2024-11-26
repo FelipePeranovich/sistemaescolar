@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import com.sistemaescolar.sistemaescolar.interfaces.IControladores;
 import com.sistemaescolar.sistemaescolar.models.Responsavel;
-
+import com.sistemaescolar.sistemaescolar.service.AlunoService;
 import com.sistemaescolar.sistemaescolar.service.ResponsavelService;
 
 
@@ -19,9 +19,11 @@ public class ResponsavelController implements IControladores<Responsavel,String>
 
     private ResponsavelService rs;
 
-    public ResponsavelController(ResponsavelService rs){
-        this.rs = rs;
+    private AlunoService as;
 
+    public ResponsavelController(ResponsavelService rs, AlunoService as){
+        this.rs = rs;
+        this.as = as;
     }
     
     @GetMapping("/novo")
@@ -43,7 +45,7 @@ public class ResponsavelController implements IControladores<Responsavel,String>
     @Override
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("responsaveis/index.html");
-        mv.addObject("responsaveis", rs.todos());
+        mv.addObject("responsavel", rs.todos());
         return mv;
     }
     
@@ -94,10 +96,23 @@ public class ResponsavelController implements IControladores<Responsavel,String>
         return mv;
     }
 
+	@GetMapping("detalhar/{chave}")
 	@Override
-	public ModelAndView detalhar(String chave) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'detalhar'");
-	}
-    
+	public ModelAndView detalhar(@PathVariable String chave) {
+		ModelAndView mv = new ModelAndView("responsaveis/detalhar.html");
+        mv.addObject("responsavel", rs.busca(chave));
+        mv.addObject("aluno", as.buscaPorResp(chave));
+        return mv;
+    }
+
+    @GetMapping("editar/voltarEditar")
+    public ModelAndView voltarEditar(){
+        ModelAndView mv = new ModelAndView("redirect:../../responsaveis");
+        return mv;
+    }
+    @GetMapping("detalhar/voltarDetalhar")
+    public ModelAndView voltarDetalhar(){
+        ModelAndView mv = new ModelAndView("redirect:../../responsaveis");
+        return mv;
+    }
 }

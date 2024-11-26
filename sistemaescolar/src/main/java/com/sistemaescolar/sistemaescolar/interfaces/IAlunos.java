@@ -13,6 +13,8 @@ public interface IAlunos<T,K> {
 
     List<T> buscaPorNome(String nome);
 
+    List<T> buscaPorResp(String nome);
+
     List<T> todos();
 
     T atualizar(T obj);

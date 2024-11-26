@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes</title>
+</head>
+<style>
+    body, h1, label, input, button, a, select {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: #f4f4f9;
+        color: #333;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    h1 {
+        text-align: center;
+        color: #294cbe;
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    a button {
+        background-color: #294cbe;
+        color: #fff;
+        font-size: 1em;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    a button:hover {
+        background-color: #1f3d9a;
+        transform: scale(1.05);
+    }
+
+
+    form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+    }
+
+    form div {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9rem;
+        color: #555;
+        margin-bottom: 5px;
+    }
+
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        background-color: #f9f9f9;
+        color: #333;
+        cursor: not-allowed;
+    }
+
+    input:read-only, select:disabled {
+        background-color: #e9ecef;
+    }
+
+    select {
+        appearance: none; 
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23999' d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 1em;
+        cursor: pointer;
+    }
+
+
+    @media (max-width: 600px) {
+        body {
+            padding: 10px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        form {
+            padding: 15px;
+        }
+
+        a button {
+            width: 100%;
+        }
+    }
+</style>
+<body>
+    <h1>Exibir Responsável</h1>
+    <a th:href="@{voltarDetalhar}"><button>Voltar</button></a>
+    <div>
+        <form th:object="${responsavel}" >
+            <div>
+                <label> Nome do Professor:
+                    <input type="text" th:field="*{nome}" readonly>
+                </label>
+            </div>
+            <div>
+                <label> CPF:
+                    <input type="text" th:field="*{cpf}" readonly>
+                </label>
+            </div>
+            <div>
+                <label> Senha:
+                    <input type="text" th:field="*{senha}" readonly>
+                </label>
+            </div>
+            <div>
+                <label> Telefone:
+                    <input type="text" th:field="*{telefoneResponsavel}" readonly>
+                </label>
+            </div>  
+            <div>
+                <label> Dependentes:
+                    <select id="aluno" th:field="${aluno}">
+                    <option th:each="aluno : ${aluno}" th:value="${aluno.cpf}" th:text="${aluno.nome}" selected="selected"></option>
+                </select>
+                </label>
+            </div>           
+        </form>
+    </div>
+</body>
+</html>

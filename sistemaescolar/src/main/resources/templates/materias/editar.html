@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excluir</title>
+    <title>Editar</title>
 </head>
 <style>
     body {
@@ -110,48 +110,30 @@
     
 </style>
 <body>
-    <h1>Deseja mesmo excluir esse Aluno?</h1>
-    <a th:href="@{voltarExcluir}"><button>Voltar</button></a>
+    <h1>Editar Matéria</h1>
+    <a th:href="@{voltarEditar}"><button>Voltar</button></a>
     <div>
-        <form th:action="@{/alunos/excluir}" th:object="${aluno}" method="post" >
+        <form th:action="@{/materias/editar}" th:object="${materia}" method="post">
             <div>
-                <label> RA do aluno:
-                    <input type="text" th:field="*{ra}" readonly>
+                <label> Codigo da Matéria:
+                    <input type="text" th:field="*{codMateria}" >
                 </label>
             </div>
             <div>
-                <label> Nome do aluno:
-                    <input type="text" th:field="*{nome}" readonly>
+                <label> Nome da Matéria
+                    <input type="text" th:field="*{nome}" >
                 </label>
             </div>
             <div>
-                <label> CPF:
-                    <input type="text" th:field="*{cpf}" readonly>
-                </label>
-            </div>
-            <div>
-                <label> Data de nascimento:
-                    <input type="date" th:field="*{dataNasc}" readonly>
-                </label>
-            </div>
-            <div>
-                <label> Senha:
-                    <input type="text" th:field="*{senha}" readonly>
-                </label>
-            </div>
-            <div>
-                <label> Turma:
-                    <input type="text" th:field="${aluno.turma.nome}" readonly>
+                <label> Professor:
+                    <select id="professor" th:field="*{professor}" required>
+                    <option value="" disabled selected>Selecione um professor</option>
+                    <option th:each="professor : ${professor}" th:value="${professor.cpf}" th:text="${professor.nome}" selected="selected"></option>
                 </select>
                 </label>
-            </div>
-            <div>
-                <label> Responsavel:
-                    <input type="text" th:field="${aluno.responsavel.nome}" readonly>
-                </select>
-                </label>
-            </div>
-            <input type="submit" value="Excluir">
-        </form> 
-       
+            </div> 
+            <input type="submit" value="Editar">
+        </form>        
+    </div>
+</body>
 </html>

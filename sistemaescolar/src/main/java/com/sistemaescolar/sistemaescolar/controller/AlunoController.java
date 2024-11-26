@@ -73,6 +73,7 @@ public class AlunoController implements IControladores<Aluno,String> {
         obj = as.atualizar(obj);
         return mv;
     }
+    
     @GetMapping("/detalhar/{chave}")
     @Override
     public ModelAndView detalhar( @PathVariable String chave) {

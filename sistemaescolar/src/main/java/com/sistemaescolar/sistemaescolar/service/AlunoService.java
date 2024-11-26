@@ -12,6 +12,7 @@ import com.sistemaescolar.sistemaescolar.repository.AlunoRepository;
 
 
 
+
 @Service
 public class AlunoService implements IAlunos<Aluno,String> {
 
@@ -38,6 +39,11 @@ public class AlunoService implements IAlunos<Aluno,String> {
     }
 
     @Override
+    public List<Aluno> buscaPorResp(String cpf){
+        return ar.findByResp(cpf);
+    }
+    
+    @Override
     public List<Aluno> todos(){
         return ar.findAll();
     }
@@ -55,6 +61,8 @@ public class AlunoService implements IAlunos<Aluno,String> {
     public void excluirRa(String chave){
         ar.deleteById(chave);
     }
+
+    
 
     
    

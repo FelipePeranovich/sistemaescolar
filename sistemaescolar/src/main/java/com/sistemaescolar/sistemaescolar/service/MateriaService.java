@@ -26,8 +26,14 @@ public class MateriaService implements IMateria<Materia,String> {
     }
 
     @Override
-    public List<Materia> buscaPorCod(int codMateria){
-        return mr.findByCodMateria(codMateria);
+    public Optional<Materia> busca(String chave){
+        Optional<Materia> m = mr.findById(chave);
+        return m;
+    }
+
+    @Override
+    public List<Materia> buscaPorNome(String nome){
+        return mr.findByNome(nome);
     }
 
     @Override
@@ -43,12 +49,6 @@ public class MateriaService implements IMateria<Materia,String> {
     @Override
     public void excluir(Materia m){
         mr.delete(m);
-    }
-
-    @Override
-    public Optional<Materia> busca(String chave) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'busca'");
     }
 
     
